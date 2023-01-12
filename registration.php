@@ -10,23 +10,31 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 	$name = $_POST['name'];
 	$phone = $_POST['phone'];
 	$email = $_POST['email'];
-	$nid = $_POST['nid'];
+	$n_id = $_POST['nid'];
 	$gender = $_POST['gender'];
 	$address = $_POST['address'];
 	
 	$password = $_POST['password'];
 	$cpassword = $_POST['cpassword'];
 
-	if(!empty($name) && !empty($phone) && !empty($email) && !empty($nid) && !empty($gender) && !empty($address) && !empty($password) && !empty($cpassword))
+	if(!empty($name) && !empty($phone) && !empty($email) && !empty($n_id) && !empty($gender) && !empty($address) && !empty($password) && !empty($cpassword))
 	{
-		//insert into data base:
-		//$user_id =random_num(20);
-
-		$query = "INSERT INTO users(nid, name, mobile, email, gender, Address, password) VALUES ('$nid','$name','$phone','$email','$gender','$address','$password')";
-
+		if($password == $cpassword)
+    {
+   
+      $query = "INSERT INTO user(nid, name, mobile, email, gender, Address, password) VALUES ('$n_id','$name','$phone','$email','$gender','$address','$password')";
+      
 		 mysqli_query($con,$query);
 		 header("Location: home.php");
 	     die;
+
+    }
+    else 
+    {
+      echo "Doesnot match with password";
+    }
+
+		
 
 	}
 	else 
@@ -59,7 +67,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
          </label>
          <ul>
             <li><a href="home.php">Home</a></li>
-            <li><a  href="registration.php">Login</a></li>
+            <li><a  href="login.php">Login</a></li>
             <li><a class="active"  href="registration.php">Register</a></li>
             <li><a href="registration.php">Train information</a></li>
             <li><a href="registration.php">Contract us</a></li>
@@ -111,18 +119,18 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 		  <div class="gender-details-box">
           <span class="gender-title">Gender</span>
           <div class="gender-category">
-            <input type="radio" name="gender" id="male">
+            <input type="radio" name="gender" id="male" value="Male">
             <label for="male">Male</label>
-            <input type="radio" name="gender" id="female">
+            <input type="radio" name="gender" id="female" value="Female">
             <label for="female">Female</label>
-            <input type="radio" name="gender" id="other">
+            <input type="radio" name="gender" id="other" value="Other">
             <label for="other">Other</label>
           </div>
         </div>
 
 
         <div class="form-submit-btn">
-		  <input class="button" onclick="alert('Signup Successfully')" type="submit" value="Signup">
+		  <input class="button"  type="submit" value="Signup">
 			<a href="login.php"> Already Registered?</a><br><br>
         </div>
 

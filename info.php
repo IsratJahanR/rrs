@@ -1,7 +1,6 @@
 <?php 
+
 session_start();
-
-
 ?>
 
 <html lang="en" dir="ltr">
@@ -24,7 +23,7 @@ session_start();
          </label>
          <ul>
             <li><a class="active" href="home.php">Home</a></li>
-            <li><a href="login.php">Login</a></li>
+            <li><a href="registration.php">Login</a></li>
             <li><a href="registration.php">Register</a></li>
             <li><a href="registration.php">Train information</a></li>
             <li><a href="registration.php">Contract us</a></li>
